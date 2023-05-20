@@ -1,4 +1,6 @@
 import os
+import time
+
 from binance.client import Client
 from telegram import Bot
 import asyncio
@@ -56,6 +58,7 @@ async def main():
             current_close = float(klines[1][4])
             price_change = ((current_close - previous_close) / previous_close) * 100
 
+            print(symbol, volume_change, thresholds[symbol])
             # If the volume has increased by more than the threshold, add to the notification messages list
             if volume_change > thresholds[symbol]:
                 symbol_notification = f"<b>Symbol:</b> {symbol}\n" \
@@ -74,6 +77,7 @@ async def main():
             await send_message(consolidated_message)
 
         # Sleep for an hour before checking again
+        print(time.time(), "Sleeping for the next time..")
         await asyncio.sleep(3600)
 
 
