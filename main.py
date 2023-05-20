@@ -2,6 +2,8 @@ import os
 from binance.client import Client
 from telegram import Bot
 import asyncio
+import numpy as np
+import pandas as pd
 
 # Binance setup
 binance_api_key = os.environ.get('BINANCE_API_KEY')
