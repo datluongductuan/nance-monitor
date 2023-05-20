@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nance-bot:
+    build:
+      context: .
+    environment:
+      - ENV_FILE=.env
+    env_file:
+      - .env
